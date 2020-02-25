@@ -1,0 +1,85 @@
+package edu.cpt187.taylor.participation4;
+
+import java.util.Random;
+
+public class Inventory 
+{
+	// Names of sod choices
+	private final String[] ITEM_NAMES = {"Premium Sod", "Special Sod","Basic Sod"};
+
+	// Prices of sod choices
+	private final double[] ITEM_PRICES = {9.95, 5.95, 1.95};
+
+	// Names of discount options
+	private final String[] DISCOUNT_NAMES = {"Member", "Senior", "No Discount"};
+
+	// Multipliers for discount rates
+	private final double[] DISCOUNT_RATES = {.25, .15, 0.0};
+
+	// Names of Prizes
+	private final String[] PRIZE_NAMES = {"$1 Of Monopoly Money", "2019 Koenigsegg Jesko", "Lifetime Supply of air"};
+
+	//Inventory
+	private int[] inStockCounts = new int[ITEM_NAMES.length];
+
+	//Random Generator
+	private Random prizeGenerator = new Random();
+
+	public Inventory()
+	{
+
+	}//End Constructor
+
+	public String[] getItemNames()
+	{
+		return ITEM_NAMES;
+	}//End getItemNames
+
+	public double[] getItemPrices()
+	{
+		return ITEM_PRICES;
+	}//End getItemPrices
+
+	public String[] getDiscountNames()
+	{
+		return DISCOUNT_NAMES;
+	}//End getDiscountNames
+
+	public double[] getDiscountRates()
+	{
+		return DISCOUNT_RATES;
+	}//End getDiscountRates
+
+	public String[] getPrizeNames()
+	{
+		return PRIZE_NAMES;
+	}//End getPrizeNames
+
+	public int getRandomNumber()
+	{
+		return prizeGenerator.nextInt(PRIZE_NAMES.length);
+	}//End getRandomNumber
+
+
+	public void setInStockCounts(int[] borrowedCounts) 
+	{
+		int index = 0;
+
+		while(index < borrowedCounts.length)
+		{
+			inStockCounts[index] = borrowedCounts[index];
+			index++;
+		}//End Initialization Loop
+	}//End setInStockCounts
+
+	public int[] getInStockCounts()
+	{
+		return inStockCounts;
+	}//End getInStockCounts
+
+	public void setReduceStock(int borrowedHowMany, int borrowedlastItemSelectedIndex)
+	{
+		inStockCounts[borrowedlastItemSelectedIndex] = inStockCounts[borrowedlastItemSelectedIndex] - borrowedHowMany;
+	}//End setReduceStock
+
+}//End Class
